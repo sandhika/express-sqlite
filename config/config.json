@@ -1,0 +1,10 @@
+{
+    "development": {
+        "username": "root",
+        "password": null,
+        "host": "localhost",
+        "dialect": "sqlite",
+        "storage": "./data/database.sqlite",
+        "secretKey": "!nih4ny@t3st"
+    }
+}
