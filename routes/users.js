@@ -44,11 +44,6 @@ var checkIDExist = function(req, res, next) {
 };
 
 
-router.use('/', jwtCheck, function(err, req, res, next) {
-    if (err.name === 'UnauthorizedError') {
-        return res.status(403).send({ status: false, data: {}, message: "invalid token provided." });
-    }
-});
 
 router.get('/profile', function(req, res) {
     const decoded = jwt.decode(req.headers.authorization.split(' ')[1])
