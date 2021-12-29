@@ -1,5 +1,5 @@
 var express = require('express');
-var Book = require('../models').Book;
+var Book = require('../models').Books;
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 var ejwt = require('express-jwt');
