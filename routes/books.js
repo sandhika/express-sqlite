@@ -9,8 +9,8 @@ var config = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
 
 
 var jwtCheck = ejwt({
-    secret: config.secretKey,
-    algorithms: ['RS256']
+    secret: config.secretKey
+        //,algorithms: ['RS256']
 });
 
 
@@ -33,6 +33,7 @@ var checkIDExist = function(req, res, next) {
 };
 
 router.use('/', jwtCheck, function(err, req, res, next) {
+    console.log(err);
     if (err.name === 'UnauthorizedError') {
         return res.status(403).send({ status: false, data: {}, message: "invalid token provided." });
     }

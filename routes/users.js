@@ -9,12 +9,14 @@ var config = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
 
 
 var jwtCheck = ejwt({
-    secret: config.secretKey,
-    algorithms: ['RS256']
+    secret: config.secretKey
+        //,algorithms: ['RS256']
 });
 
 
 function createToken(user) {
+    //var token = jwt.sign({ email: user.email }, privateKey, { algorithm: 'RS256' });
+
     return jwt.sign({ email: user.email },
         config.secretKey, {
             expiresIn: '24h'
@@ -68,7 +70,7 @@ router.post('/register', function(req, res) {
 });
 
 router.post('/login', function(req, res) {
-    User.find({
+    User.findOne({
         where: { email: req.body.email }
     }).then(result => {
         if (result) {
